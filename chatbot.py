@@ -21,6 +21,9 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain.docstore.document import Document
 ###############################################################################################
 files=os.listdir()
 ###############################################################################################
@@ -62,8 +65,12 @@ embeddings = HuggingFaceEmbeddings(
     encode_kwargs=encode_kwargs # Pass the encoding options
 )
 
+# Convert text_chunks (list of strings) to Document objects
+documents = [Document(page_content=chunk) for chunk in text_chunks]  
 
-vector_store=FAISS.from_texts(texts=text_chunks,embedding=embeddings)
+# Now use 'documents' instead of 'text_chunks'
+vector_store = FAISS.from_documents(documents=documents, embedding=embeddings)
+
 # Retrieve and generate using the relevant snippets of the blog.
 retriever = vector_store.as_retriever()
 
