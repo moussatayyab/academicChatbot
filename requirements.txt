@@ -10,3 +10,4 @@ openpyxl
 python-dotenv
 langchain-groq
 transformers
+PyPDF2
