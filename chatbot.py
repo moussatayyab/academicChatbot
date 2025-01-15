@@ -63,7 +63,7 @@ embeddings = HuggingFaceEmbeddings(
 )
 
 
-vector_store=FAISS.from_documents(documents=text_chunks,embedding=embeddings)
+vector_store=FAISS.from_texts(texts=text_chunks,embedding=embeddings)
 # Retrieve and generate using the relevant snippets of the blog.
 retriever = vector_store.as_retriever()
 
