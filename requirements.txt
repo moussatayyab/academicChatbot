@@ -11,3 +11,4 @@ python-dotenv
 langchain-groq
 transformers
 PyPDF2
+langchain_huggingface
