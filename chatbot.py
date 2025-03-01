@@ -24,6 +24,10 @@ load_dotenv()
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.docstore.document import Document
+from datetime import datetime
+
+
+
 ###############################################################################################
 files=os.listdir()
 ###############################################################################################
@@ -118,6 +122,24 @@ if st.button("Submit") and query!="":
     for i in vector_store.similarity_search(query):
         context += i.page_content 
 
-    st.write(context)
+    
+    # st.write(context)
+    with st.exapnder("Feedback"):
+        # Collect user feedback
+        rating = st.slider("Rate this response (1 = Bad, 5 = Excellent)", 1, 5, 3)
+        comment = st.text_area("Any additional feedback?")
+
+
+
+
+    # Get current date and time
+    # now = datetime.now()
+    # # Format as string
+    # formatted_now = now.strftime("%Y-%m-%d %H:%M:%S")
+    # pd.DataFrame({"DateTime":formatted_now,"Context":context,"AI Response":res,"User Feedback":""}.to_excel("user_feedback")
+                 
+
+
+
 
 
