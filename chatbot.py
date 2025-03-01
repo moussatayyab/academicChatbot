@@ -104,7 +104,7 @@ st.title("Student Assistant")
 query=st.text_input("Write Query Here")
 
 
-if st.button("Submit") and res!="":
+if st.button("Submit") and query!="":
     res=rag_chain.invoke(query)
     st.write(res)
 
