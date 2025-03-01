@@ -104,7 +104,7 @@ rag_chain = (
 )
 
 st.title("Student Assistant")
-
+query=""
 query=st.text_input("Write Query Here")
 
 res=""
