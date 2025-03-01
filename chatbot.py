@@ -17,11 +17,10 @@ from langchain import hub
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
-from langchain.embeddings import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.docstore.document import Document
 from datetime import datetime
