@@ -116,7 +116,7 @@ if st.button("Submit") and query!="":
     context=""
 
     for i in vector_store.similarity_search(query):
-        context += i.pagen_cotent 
+        context += i.pagen_content 
 
     st.write(context)
 
