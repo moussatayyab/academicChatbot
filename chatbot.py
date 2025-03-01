@@ -25,78 +25,79 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.docstore.document import Document
 ###############################################################################################
-# files=os.listdir()
-# ###############################################################################################
-# files=[file for file in files if file.split(".")[-1]=="pdf"]
-# ###############################################################################################
-# def get_pdf_text(pdf_docs):
-#     text = ""
-#     for pdf in pdf_docs:
-#         pdf_reader = PdfReader(pdf)
-#         for page in pdf_reader.pages:
-#             text += page.extract_text()
-#     return text
-# text_data=get_pdf_text(files)
+files=os.listdir()
+###############################################################################################
+files=[file for file in files if file.split(".")[-1]=="pdf"]
+
+###############################################################################################
+def get_pdf_text(pdf_docs):
+    text = ""
+    for pdf in pdf_docs:
+        pdf_reader = PdfReader(pdf)
+        for page in pdf_reader.pages:
+            text += page.extract_text()
+    return text
+text_data=get_pdf_text(files[:1)
 
 
 
 
-# # # split the extracted data into text chunks using the text_splitter, which splits the text based on the specified number of characters and overlap
-# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-# text_chunks = text_splitter.split_text(text_data)
-# # print the number of chunks obtained
-# # len(text_chunks)
+# # split the extracted data into text chunks using the text_splitter, which splits the text based on the specified number of characters and overlap
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+text_chunks = text_splitter.split_text(text_data)
+# print the number of chunks obtained
+# len(text_chunks)
 
 
 
-# modelPath = "BAAI/bge-large-en-v1.5"
+modelPath = "BAAI/bge-large-en-v1.5"
 
-# # Create a dictionary with model configuration options, specifying to use the CPU for computations
-# model_kwargs = {'device':'cpu'}
-# #if using apple m1/m2 -> use device : mps (this will use apple metal)
+# Create a dictionary with model configuration options, specifying to use the CPU for computations
+model_kwargs = {'device':'cpu'}
+#if using apple m1/m2 -> use device : mps (this will use apple metal)
 
-# # Create a dictionary with encoding options, specifically setting 'normalize_embeddings' to False
-# encode_kwargs = {'normalize_embeddings': True}
+# Create a dictionary with encoding options, specifically setting 'normalize_embeddings' to False
+encode_kwargs = {'normalize_embeddings': True}
 
-# # Initialize an instance of HuggingFaceEmbeddings with the specified parameters
-# embeddings = HuggingFaceEmbeddings(
-#     model_name=modelPath,     # Provide the pre-trained model's path
-#     model_kwargs=model_kwargs, # Pass the model configuration options
-#     encode_kwargs=encode_kwargs # Pass the encoding options
-# )
+# Initialize an instance of HuggingFaceEmbeddings with the specified parameters
+embeddings = HuggingFaceEmbeddings(
+    model_name=modelPath,     # Provide the pre-trained model's path
+    model_kwargs=model_kwargs, # Pass the model configuration options
+    encode_kwargs=encode_kwargs # Pass the encoding options
+)
 
-# # Convert text_chunks (list of strings) to Document objects
-# documents = [Document(page_content=chunk) for chunk in text_chunks]  
+# Convert text_chunks (list of strings) to Document objects
+documents = [Document(page_content=chunk) for chunk in text_chunks]  
 
-# # Now use 'documents' instead of 'text_chunks'
-# vector_store = FAISS.from_documents(documents=documents, embedding=embeddings)
+# Now use 'documents' instead of 'text_chunks'
+vector_store = FAISS.from_documents(documents=documents, embedding=embeddings)
 
-# # Retrieve and generate using the relevant snippets of the blog.
-# retriever = vector_store.as_retriever()
+# Retrieve and generate using the relevant snippets of the blog.
+retriever = vector_store.as_retriever()
 
-# GROQ_API_KEY=os.getenv("GROQ_API_KEY")
+GROQ_API_KEY=os.getenv("GROQ_API_KEY")
 
-# from langchain_groq import ChatGroq
+from langchain_groq import ChatGroq
 
-# llm = ChatGroq(
-#     temperature=0,
-#     model="mixtral-8x7b-32768",
-#     api_key=GROQ_API_KEY
-# )
+llm = ChatGroq(
+    temperature=0,
+    model="mixtral-8x7b-32768",
+    api_key=GROQ_API_KEY
+)
 
-# prompt = hub.pull("rlm/rag-prompt")
-
-
-# def format_docs(docs):
-#     return "\n\n".join(doc.page_content for doc in docs)
+prompt = hub.pull("rlm/rag-prompt")
 
 
-# rag_chain = (
-#     {"context": retriever | format_docs, "question": RunnablePassthrough()}
-#     | prompt
-#     | llm
-#     | StrOutputParser()
-# )
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
+
+
+rag_chain = (
+    {"context": retriever | format_docs, "question": RunnablePassthrough()}
+    | prompt
+    | llm
+    | StrOutputParser()
+)
 
 st.title("Student Assistant")
 
