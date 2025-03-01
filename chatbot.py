@@ -123,7 +123,7 @@ if st.button("Submit") and query!="":
 
     
     # st.write(context)
-    with st.exapnder("Feedback"):
+    with st.expander("Feedback"):
         # Collect user feedback
         rating = st.slider("Rate this response (1 = Bad, 5 = Excellent)", 1, 5, 3)
         comment = st.text_area("Any additional feedback?")
