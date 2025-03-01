@@ -121,7 +121,7 @@ if st.button("Submit") and query!="":
     for i in vector_store.similarity_search(query):
         context += i.page_content 
 
-    
+if res!="":
     # st.write(context)
     with st.expander("Feedback"):
         # Collect user feedback
