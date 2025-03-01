@@ -37,7 +37,7 @@ def get_pdf_text(pdf_docs):
         for page in pdf_reader.pages:
             text += page.extract_text()
     return text
-text_data=get_pdf_text(files[:1)
+text_data=get_pdf_text(files[:1])
 
 
 
