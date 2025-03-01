@@ -106,7 +106,7 @@ st.title("Student Assistant")
 
 query=st.text_input("Write Query Here")
 
-
+res=""
 if st.button("Submit") and query!="":
     res=rag_chain.invoke(query)
     st.write(res)
@@ -121,7 +121,7 @@ if st.button("Submit") and query!="":
     for i in vector_store.similarity_search(query):
         context += i.page_content 
 
-if res!="":
+if query!="" & res!="":
     # st.write(context)
     with st.expander("Feedback"):
         # Collect user feedback
