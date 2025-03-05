@@ -12,6 +12,8 @@ from langchain.chains import RetrievalQA
 from langchain_openai import ChatOpenAI
 import getpass
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
 from PyPDF2 import PdfReader
 import sentence_transformers
 from langchain import hub
