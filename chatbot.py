@@ -195,7 +195,7 @@ if selections=="Feedback":
     ratings_x=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().index
     ratings_y=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().values
 
-    col1,xol2=st.columns(2)
+    col1,col2=st.columns(2)
     with col1:
         st.subheader("Application Ratings")
         fig, ax = plt.subplots(figsize=(6, 4))
