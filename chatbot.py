@@ -314,18 +314,18 @@ if selections=="Feedback":
         st.pyplot(fig)
 
     col1,col2=st.columns(2)
-    with col1:
-        relevant_x=df['How accurate was the chatbot\’s information?'].value_counts().index
-        relevant_y=df['How accurate was the chatbot\’s information?'].value_counts().values
-        st.subheader("Application Ratings")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        # ax.bar(x=ratings_x,height=ratings_y)
-        sns.barplot(x=relevant_x, y=relevant_y, ax=ax, palette="viridis")
-        # ax.set_xticks([1, 2, 3, 4, 5])
-        ax.set_xlabel("Category")
-        ax.set_ylabel("Values")
-        ax.set_title("GPT Response ")
-        st.pyplot(fig)
+    # with col1:
+    #     relevant_x=df['How accurate was the chatbot\’s information?'].value_counts().index
+    #     relevant_y=df['How accurate was the chatbot\’s information?'].value_counts().values
+    #     st.subheader("Application Ratings")
+    #     fig, ax = plt.subplots(figsize=(6, 4))
+    #     # ax.bar(x=ratings_x,height=ratings_y)
+    #     sns.barplot(x=relevant_x, y=relevant_y, ax=ax, palette="viridis")
+    #     # ax.set_xticks([1, 2, 3, 4, 5])
+    #     ax.set_xlabel("Category")
+    #     ax.set_ylabel("Values")
+    #     ax.set_title("GPT Response ")
+    #     st.pyplot(fig)
 
     
     with col2:
