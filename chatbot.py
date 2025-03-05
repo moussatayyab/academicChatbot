@@ -90,6 +90,9 @@ llm_llama3 = ChatGroq(
 
 
 ################################################################################################################################
+file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
+output_file = "open_ai_key.txt"
+
 def download_db():
     url = f"https://drive.google.com/uc?id={file_id}"
     gdown.download(url, output_file, quiet=False)
