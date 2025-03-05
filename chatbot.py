@@ -192,8 +192,8 @@ if selections=="Feedback":
     df=pd.read_csv(url)
     st.write(df['How satisfied are you with the chatbot\'s overall performance?'].value_counts())
 
-    ratings_x=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().index
-    ratings_y=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().values
+    ratings_x=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().index[0]
+    ratings_y=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().values[0]
     st.write(ratings_x,ratings_y)
 
 
