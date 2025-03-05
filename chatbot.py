@@ -116,6 +116,21 @@ llm_openai = ChatOpenAI(model="gpt-4o-mini")
 #     return "\n\n".join(doc.page_content for doc in docs)
 
 
+
+def get_feedback(feedback):
+    return f"""
+    ### What improvements would you like to see in the chatbot?	: {What improvements would you like to see in the chatbot?}
+    What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed? : feedback{}
+    Did you face any issues while using the chatbot? feedback{}
+    
+    """
+
+
+
+
+
+
+
 st.title("Student Assistant")
 
 selections=st.sidebar.selectbox("☰ Menu", ["Home","AI Assistant", "Feedback"])
