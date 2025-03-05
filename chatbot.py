@@ -367,7 +367,7 @@ if selections=="Feedback":
         ax.pie(df["Would you recommend this chatbot to fellow students or faculty members for academic support?"].value_counts().values, labels=df["Would you recommend this chatbot to fellow students or faculty members for academic support?"].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
         # Remove extra padding
         plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
-        ax.set_title("Would You Recommend this Chatbot"")
+        ax.set_title("Would You Recommend this Chatbot")
         # Adjust layout to reduce whitespace
         st.pyplot(fig)
         
