@@ -194,10 +194,8 @@ if selections=="Feedback":
 
     ratings_x=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().index
     ratings_y=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().values
-    st.write(ratings_x,ratings_y)
 
     col1,xol2=st.columns(2)
-
     with col1:
         st.subheader("Application Ratings")
         fig, ax = plt.subplots(figsize=(6, 4))
@@ -209,13 +207,12 @@ if selections=="Feedback":
         ax.set_title("Application Ratings")
         st.pyplot(fig)
 
-# # Pie Chart using Matplotlib
-# elif chart_type == "Pie Chart":
-#     st.subheader("Pie Chart (Matplotlib)")
-#     fig, ax = plt.subplots(figsize=(6, 6))
-#     ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%', colors=sns.color_palette("pastel"))
-#     ax.set_title("Pie Chart Example")
-#     st.pyplot(fig)
+    with col2:
+        st.subheader("Pie Chart (Matplotlib)")
+        fig, ax = plt.subplots(figsize=(6, 6))
+        ax.pie(df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().values, labels=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"))
+        ax.set_title("Pie Chart Example")
+        st.pyplot(fig)
 
 
     
