@@ -210,12 +210,12 @@ if selections=="Feedback":
     
     with col2:
         effective_resources_x=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().index
-        effective_resources_x_y=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().values
+        effective_resources_y=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().values
     
         st.subheader("Application Ratings")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
-        sns.barplot(x=effective_resources_x, y=effective_resources_y, ax=ax, palette="viridis")
+        sns.barplot(x=effective_resources_x, y=effective_resources_y, ax=ax, palette="deep")
         # ax.set_xticks([1, 2, 3, 4, 5])
         ax.set_xlabel("Ratings")
         ax.set_ylabel("Values")
