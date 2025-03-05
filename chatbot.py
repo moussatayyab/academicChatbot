@@ -90,9 +90,6 @@ llm_llama3 = ChatGroq(
 )
 
 ################################################################################################################################
-
-
-################################################################################################################################
 file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
 output_file = "open_ai_key.txt"
 
@@ -129,8 +126,6 @@ query=""
 
 if selections=="Home":
     st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant designed to help students with their academic and school-related queries. It provides instant responses to common questions, assists with homework, shares important school updates, and offers guidance on schedules, subjects, and extracurricular activities.  
-
-    
      Key Features:  
     ✅ Homework Assistance – Provides explanations and study resources.  
     ✅ Timetable & Schedule Support – Helps students check class schedules.  
@@ -139,7 +134,6 @@ if selections=="Home":
     ✅ Interactive & Voice Support – Allows students to communicate via text or voice.  """)
     
     
-
 if selections=="AI Assistant":
     query=st.text_input("Write Query Here")
     # if st.button("Submit") and query!="":
@@ -185,7 +179,6 @@ if selections=="AI Assistant":
 if selections=="Feedback":
     
     st.subheader("Welcome to User Feedback Section")
-    
     st.write("Please Leave Feedback [Here](https://docs.google.com/forms/d/e/1FAIpQLSekxnpLx5glG_bYHy54m0IrbBIZxEM37dihnBNOeRMR0n9KUg/viewform?usp=header)")
     sheet_id = '1k1MYDZ7n9sIjPTfXFMFHMwEJOMkmhcWzikFVoXlH2SQ' # replace with your sheet's ID
     
@@ -220,38 +213,64 @@ if selections=="Feedback":
         # ax.set_xticks([1, 2, 3, 4, 5])
         ax.set_xlabel("Category")
         ax.set_ylabel("Values")
-        ax.set_title("Application Effective")
+        ax.set_title("Did the Chatbot Effectively Assist You")
         st.pyplot(fig)
         
         
         
     col1,col2=st.columns(2)
     with col1:
-        response_x=df['Which GPT responses do you find the most helpful?'].value_counts().index
-        response_y=df['Which GPT responses do you find the most helpful?'].value_counts().values
-        st.subheader("Application Ratings")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        # ax.bar(x=ratings_x,height=ratings_y)
-        sns.barplot(x=response_x, y=response_y, ax=ax, palette="viridis")
-        # ax.set_xticks([1, 2, 3, 4, 5])
-        ax.set_xlabel("Category")
-        ax.set_ylabel("Values")
-        ax.set_title("GPT Response ")
+
+        st.subheader("Which GPT responses do you find the most helpful?")
+        fig, ax = plt.subplots(figsize=(4,2))
+        ax.pie(df['Which GPT responses do you find the most helpful?'].value_counts().values, labels=df['Which GPT responses do you find the most helpful?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
+        # Remove extra padding
+        plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+        ax.set_title("Which GPT responses do you find the most helpful?")
+        # Adjust layout to reduce whitespace
         st.pyplot(fig)
+
+        
+        # response_x=df['Which GPT responses do you find the most helpful?'].value_counts().index
+        # response_y=df['Which GPT responses do you find the most helpful?'].value_counts().values
+        # st.subheader("Application Ratings")
+        # fig, ax = plt.subplots(figsize=(6, 4))
+        # # ax.bar(x=ratings_x,height=ratings_y)
+        # sns.barplot(x=response_x, y=response_y, ax=ax, palette="viridis")
+        # # ax.set_xticks([1, 2, 3, 4, 5])
+        # ax.set_xlabel("Category")
+        # ax.set_ylabel("Values")
+        # ax.set_title("GPT Response ")
+        # st.pyplot(fig)
 
     
     with col2:
-        interaction_x=df['How easy was it to interact with the chatbot?'].value_counts().index
-        interaction_y=df['How easy was it to interact with the chatbot?'].value_counts().values
-        st.subheader("Application Effective")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        # ax.bar(x=ratings_x,height=ratings_y)
-        sns.barplot(x=interaction_x, y=interaction_y, ax=ax, palette="deep")
-        # ax.set_xticks([1, 2, 3, 4, 5])
-        ax.set_xlabel("Category")
-        ax.set_ylabel("Values")
-        ax.set_title("Application Effective")
+
+        st.subheader("How easy was it to interact with the chatbot?")
+        fig, ax = plt.subplots(figsize=(4,2))
+        ax.pie(df['How easy was it to interact with the chatbot?'].value_counts().values, labels=df['How easy was it to interact with the chatbot?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
+        # Remove extra padding
+        plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+        ax.set_title("How easy was it to interact with the chatbot?")
+        # Adjust layout to reduce whitespace
         st.pyplot(fig)
+
+
+
+
+
+        
+        # interaction_x=df['How easy was it to interact with the chatbot?'].value_counts().index
+        # interaction_y=df['How easy was it to interact with the chatbot?'].value_counts().values
+        # st.subheader("Application Effective")
+        # fig, ax = plt.subplots(figsize=(6, 4))
+        # # ax.bar(x=ratings_x,height=ratings_y)
+        # sns.barplot(x=interaction_x, y=interaction_y, ax=ax, palette="deep")
+        # # ax.set_xticks([1, 2, 3, 4, 5])
+        # ax.set_xlabel("Category")
+        # ax.set_ylabel("Values")
+        # ax.set_title("Application Effective")
+        # st.pyplot(fig)
 
         
         
