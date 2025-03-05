@@ -126,47 +126,46 @@ query=st.text_input("Write Query Here")
 
 
 if selections=="Home":
-    st.markdown("""### **About the School Student Assistant Chatbot**  
+    st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant designed to help students with their academic and school-related queries. It provides instant responses to common questions, assists with homework, shares important school updates, and offers guidance on schedules, subjects, and extracurricular activities.  
 
-    The **School Student Assistant Chatbot** is an AI-powered virtual assistant designed to help students with their academic and school-related queries. It provides instant responses to common questions, assists with homework, shares important school updates, and offers guidance on schedules, subjects, and extracurricular activities.  
+    This chatbot enhances student engagement by providing quick, accurate, and interactive support anytime, reducing the need for manual inquiries. It is built with advanced natural language processing (NLP) to understand student queries effectively and deliver relevant information in a conversational manner.  
     
-    This chatbot enhances student engagement by providing **quick, accurate, and interactive support** anytime, reducing the need for manual inquiries. It is built with advanced **natural language processing (NLP)** to understand student queries effectively and deliver relevant information in a conversational manner.  
+     Key Features:  
+    ✅ Homework Assistance – Provides explanations and study resources.  
+    ✅ Timetable & Schedule Support – Helps students check class schedules.  
+    ✅ School Announcements & Notices – Delivers updates on events and policies.  
+    ✅ Subject Guidance – Answers subject-related queries.  
+    ✅ Interactive & Voice Support – Allows students to communicate via text or voice.  
     
-    ### **Key Features:**  
-    ✅ **Homework Assistance** – Provides explanations and study resources.  
-    ✅ **Timetable & Schedule Support** – Helps students check class schedules.  
-    ✅ **School Announcements & Notices** – Delivers updates on events and policies.  
-    ✅ **Subject Guidance** – Answers subject-related queries.  
-    ✅ **Interactive & Voice Support** – Allows students to communicate via text or voice.  
+    With its user-friendly interface and AI-driven capabilities, the chatbot enhances the learning experience by making information more accessible and helping students stay organized.""")
+
+
+if selections=="AI Assistant":
+    if st.button("Submit") and query!="":
+        rag_chain = (
+        {"context": retriever | format_docs, "question": RunnablePassthrough()}
+        | prompt
+        | llm_openai
+        | StrOutputParser()
+        )
+        st.subheader("OpenAI GPT Response")
+        res=rag_chain.invoke(query)
+        st.write(res)
     
-    With its **user-friendly interface** and **AI-driven capabilities**, the chatbot enhances the learning experience by making information more accessible and helping students stay organized. """)
-
-
-if st.button("Submit") and query!="":
-    rag_chain = (
-    {"context": retriever | format_docs, "question": RunnablePassthrough()}
-    | prompt
-    | llm_openai
-    | StrOutputParser()
-    )
-    st.subheader("OpenAI GPT Response")
-    res=rag_chain.invoke(query)
-    st.write(res)
-
-    # # performing a similarity search to fetch the most relevant context
-    st.write("")
-    st.write("")
-    st.write("")
-
-    rag_chain = (
-    {"context": retriever | format_docs, "question": RunnablePassthrough()}
-    | prompt
-    | llm_llama3
-    | StrOutputParser()
-    )
-    st.subheader("Meta Llama3 GPT Response")
-    res=rag_chain.invoke(query)
-    st.write(res)
+        # # performing a similarity search to fetch the most relevant context
+        st.write("")
+        st.write("")
+        st.write("")
+    
+        rag_chain = (
+        {"context": retriever | format_docs, "question": RunnablePassthrough()}
+        | prompt
+        | llm_llama3
+        | StrOutputParser()
+        )
+        st.subheader("Meta Llama3 GPT Response")
+        res=rag_chain.invoke(query)
+        st.write(res)
 
     # context=""
 
@@ -182,5 +181,9 @@ if st.button("Submit") and query!="":
 
 
 
-
+if selections=="Feedback":
+    st.subheader("Welcome to User Feedback Section")
+    
+    st.write("Please Leave Feedback [Here](https://docs.google.com/forms/d/e/1FAIpQLSekxnpLx5glG_bYHy54m0IrbBIZxEM37dihnBNOeRMR0n9KUg/viewform?usp=header)")
+    
 
