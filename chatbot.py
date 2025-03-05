@@ -118,16 +118,21 @@ llm_openai = ChatOpenAI(model="gpt-4o-mini")
 
 
 def get_feedback(feedback):
-    return f """
-    ### What improvements would you like to see in the chatbot?	: feedback{What improvements would you like to see in the chatbot?}
-    ### What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed? : feedback{What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed?}
-    ### Did you face any issues while using the chatbot? If yes, please explain. :feedback{Did you face any issues while using the chatbot? If yes, please explain.}
+    return f"""
+    ### What improvements would you like to see in the chatbot?  
+    - {feedback["What improvements would you like to see in the chatbot?"]}
 
-    Give Followings:
+    ### What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed?  
+    - {feedback["What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed?"]}
 
-    ### Improvoments
-    ### Challenges
-    ## Issues
+    ### Did you face any issues while using the chatbot? If yes, please explain.  
+    - {feedback["Did you face any issues while using the chatbot? If yes, please explain."]}
+
+    ### Summary of Responses:
+
+    - **Improvements:** Improvements Here
+    - **Challenges:** Challenges Here
+    - **Issues:** Issues Here
     """
 
 
