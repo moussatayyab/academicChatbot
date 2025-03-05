@@ -176,12 +176,18 @@ if selections=="AI Assistant":
     # formatted_now = now.strftime("%Y-%m-%d %H:%M:%S")
     # pd.DataFrame({"DateTime":formatted_now,"Context":context,"AI Response":res,"User Feedback":""}.to_excel("user_feedback")
                  
-
+# https://docs.google.com/spreadsheets/d/1ramLbRPuTHo4yY2ylTUIM1vyy539MumNGAdFCP5w9uY/edit?usp=sharing
 
 
 if selections=="Feedback":
     st.subheader("Welcome to User Feedback Section")
     
     st.write("Please Leave Feedback [Here](https://docs.google.com/forms/d/e/1FAIpQLSekxnpLx5glG_bYHy54m0IrbBIZxEM37dihnBNOeRMR0n9KUg/viewform?usp=header)")
+    sheet_id = '1ramLbRPuTHo4yY2ylTUIM1vyy539MumNGAdFCP5w9uY' # replace with your sheet's ID
+    
+    url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+    df=pd.read_csv(url)
+    st.write(df)
+
     
 
