@@ -192,7 +192,7 @@ if selections=="Feedback":
     with col1:
         ratings_x=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().index
         ratings_y=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().values
-        st.subheader("Application Ratings")
+        st.write("Application Ratings")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=ratings_x, y=ratings_y, ax=ax, palette="viridis")
@@ -206,7 +206,7 @@ if selections=="Feedback":
     with col2:
         effective_resources_x=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().index
         effective_resources_y=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().values
-        st.subheader("Application Effective")
+        st.write("Application Effective")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=effective_resources_x, y=effective_resources_y, ax=ax, palette="deep")
@@ -221,7 +221,7 @@ if selections=="Feedback":
     col1,col2=st.columns(2)
     with col1:
 
-        st.subheader("Which GPT responses do you find the most helpful?")
+        st.write("Which GPT responses do you find the most helpful?")
         fig, ax = plt.subplots(figsize=(4,2))
         ax.pie(df['Which GPT responses do you find the most helpful?'].value_counts().values, labels=df['Which GPT responses do you find the most helpful?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
         # Remove extra padding
@@ -246,7 +246,7 @@ if selections=="Feedback":
     
     with col2:
 
-        st.subheader("How easy was it to interact with the chatbot?")
+        st.write("How easy was it to interact with the chatbot?")
         fig, ax = plt.subplots(figsize=(4,2))
         ax.pie(df['How easy was it to interact with the chatbot?'].value_counts().values, labels=df['How easy was it to interact with the chatbot?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
         # Remove extra padding
@@ -280,7 +280,7 @@ if selections=="Feedback":
     with col1:
         satisfactory_x=df['Was the chatbot\'s response time satisfactory?'].value_counts().index
         satisfactory_y=df['Was the chatbot\'s response time satisfactory?'].value_counts().values
-        st.subheader("Application Ratings")
+        st.write("Application Ratings")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=satisfactory_x, y=satisfactory_y, ax=ax, palette="viridis")
@@ -294,7 +294,7 @@ if selections=="Feedback":
     with col2:
         understand_x=df['Did the chatbot understand your questions correctly?'].value_counts().index
         understand_y=df['Did the chatbot understand your questions correctly?'].value_counts().values
-        st.subheader("Application Effective")
+        st.write("Application Effective")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=understand_x, y=understand_y, ax=ax, palette="deep")
