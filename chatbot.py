@@ -127,17 +127,15 @@ query=""
 if selections=="Home":
     st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant designed to help students with their academic and school-related queries. It provides instant responses to common questions, assists with homework, shares important school updates, and offers guidance on schedules, subjects, and extracurricular activities.  
 
-    This chatbot enhances student engagement by providing quick, accurate, and interactive support anytime, reducing the need for manual inquiries. It is built with advanced natural language processing (NLP) to understand student queries effectively and deliver relevant information in a conversational manner.  
     
      Key Features:  
     ✅ Homework Assistance – Provides explanations and study resources.  
     ✅ Timetable & Schedule Support – Helps students check class schedules.  
     ✅ School Announcements & Notices – Delivers updates on events and policies.  
     ✅ Subject Guidance – Answers subject-related queries.  
-    ✅ Interactive & Voice Support – Allows students to communicate via text or voice.  
+    ✅ Interactive & Voice Support – Allows students to communicate via text or voice.  """)
     
-    With its user-friendly interface and AI-driven capabilities, the chatbot enhances the learning experience by making information more accessible and helping students stay organized.""")
-
+    
 
 if selections=="AI Assistant":
     query=st.text_input("Write Query Here")
