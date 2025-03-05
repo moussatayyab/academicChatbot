@@ -336,12 +336,12 @@ if selections=="Feedback":
     col1,col2=st.columns(2)
     with col1:
         
-        st.write(df.columns[8])
+        st.write("Did the chatbot provide helpful and relevant responses?")
         fig, ax = plt.subplots(figsize=(4,6))
-        ax.pie(df[df.columns[8]].value_counts().values, labels=df[df.columns[8]].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
+        ax.pie(df["Did the chatbot provide helpful and relevant responses?"].value_counts().values, labels=df["Did the chatbot provide helpful and relevant responses?"].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
         # Remove extra padding
         plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
-        ax.set_title(df.columns[8])
+        ax.set_title("Did the chatbot provide helpful and relevant responses?")
         # Adjust layout to reduce whitespace
         st.pyplot(fig)
 
