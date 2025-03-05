@@ -180,17 +180,17 @@ if selections=="AI Assistant":
     # pd.DataFrame({"DateTime":formatted_now,"Context":context,"AI Response":res,"User Feedback":""}.to_excel("user_feedback")
                  
 # https://docs.google.com/spreadsheets/d/1ramLbRPuTHo4yY2ylTUIM1vyy539MumNGAdFCP5w9uY/edit?usp=sharing
-
+# https://docs.google.com/spreadsheets/d/1k1MYDZ7n9sIjPTfXFMFHMwEJOMkmhcWzikFVoXlH2SQ/edit?usp=sharing
 
 if selections=="Feedback":
     st.subheader("Welcome to User Feedback Section")
     
     st.write("Please Leave Feedback [Here](https://docs.google.com/forms/d/e/1FAIpQLSekxnpLx5glG_bYHy54m0IrbBIZxEM37dihnBNOeRMR0n9KUg/viewform?usp=header)")
-    sheet_id = '1ramLbRPuTHo4yY2ylTUIM1vyy539MumNGAdFCP5w9uY' # replace with your sheet's ID
+    sheet_id = '1k1MYDZ7n9sIjPTfXFMFHMwEJOMkmhcWzikFVoXlH2SQ' # replace with your sheet's ID
     
     url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
     df=pd.read_csv(url)
-    st.write(df)
+    st.write(df['How satisfied are you with the chatbot\'s overall performance?'])
 
 
 import streamlit as st
