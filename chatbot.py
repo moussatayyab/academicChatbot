@@ -233,19 +233,19 @@ if selections=="Feedback":
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=response_x, y=response_y, ax=ax, palette="viridis")
         # ax.set_xticks([1, 2, 3, 4, 5])
-        ax.set_xlabel("Ratings")
+        ax.set_xlabel("Category")
         ax.set_ylabel("Values")
         ax.set_title("GPT Response ")
         st.pyplot(fig)
 
     
     with col2:
-        effective_resources_x=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().index
-        effective_resources_y=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().values
+        interaction_x=df['How easy was it to interact with the chatbot?'].value_counts().index
+        interaction_y=df['How easy was it to interact with the chatbot?'].value_counts().values
         st.subheader("Application Effective")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
-        sns.barplot(x=effective_resources_x, y=effective_resources_y, ax=ax, palette="deep")
+        sns.barplot(x=interaction_x, y=interaction_y, ax=ax, palette="deep")
         # ax.set_xticks([1, 2, 3, 4, 5])
         ax.set_xlabel("Category")
         ax.set_ylabel("Values")
