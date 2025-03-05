@@ -115,7 +115,7 @@ def format_docs(docs):
 
 st.title("Student Assistant")
 
-selections=st.sidebar.selectbox("☰ Menu", ["Home","AI Assistant", "Feedback")
+selections=st.sidebar.selectbox("☰ Menu", ["Home","AI Assistant", "Feedback"])
 
 
 query=""
