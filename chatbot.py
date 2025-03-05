@@ -306,10 +306,10 @@ if selections=="Feedback":
 
     col1,col2=st.columns(2)
     with col1:
-        st.write(df.columns[7])
+        # st.write(df.columns[7])
         response_x=df[df.columns[8]].value_counts().index
         response_y=df[df.columns[8]].value_counts().values
-        st.subheader(df.columns[8])
+        st.write(df.columns[8])
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=satisfactory_x, y=satisfactory_y, ax=ax, palette="viridis")
@@ -323,7 +323,7 @@ if selections=="Feedback":
     with col2:
         experience_x=df['Up to what extent this chatbot contributed to your learning experience or academic efficiency?'].value_counts().index
         experience_y=df['Up to what extent this chatbot contributed to your learning experience or academic efficiency?'].value_counts().values
-        st.subheader("Up to what extent this chatbot contributed to your learning experience or academic efficiency?")
+        st.write("Up to what extent this chatbot contributed to your learning experience or academic efficiency?")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=experience_x, y=experience_y, ax=ax, palette="deep")
@@ -335,31 +335,54 @@ if selections=="Feedback":
 
     col1,col2=st.columns(2)
     with col1:
-        relevant_x=df[df.columns[8]].value_counts().index
-        relevant_y=df[df.columns[8]].value_counts().values
-        st.subheader("Application Ratings")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        # ax.bar(x=ratings_x,height=ratings_y)
-        sns.barplot(x=relevant_x, y=relevant_y, ax=ax, palette="viridis")
-        # ax.set_xticks([1, 2, 3, 4, 5])
-        ax.set_xlabel("Category")
-        ax.set_ylabel("Values")
-        ax.set_title("GPT Response ")
+        
+        st.write(df.columns[8])
+        fig, ax = plt.subplots(figsize=(4,2))
+        ax.pie(df[df.columns[8]].value_counts().values, labels=df[df.columns[8]].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
+        # Remove extra padding
+        plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+        ax.set_title(df.columns[8])
+        # Adjust layout to reduce whitespace
         st.pyplot(fig)
+
+        
+        # relevant_x=df[df.columns[8]].value_counts().index
+        # relevant_y=df[df.columns[8]].value_counts().values
+        # st.write("Application Ratings")
+        # fig, ax = plt.subplots(figsize=(6, 4))
+        # # ax.bar(x=ratings_x,height=ratings_y)
+        # sns.barplot(x=relevant_x, y=relevant_y, ax=ax, palette="viridis")
+        # # ax.set_xticks([1, 2, 3, 4, 5])
+        # ax.set_xlabel("Category")
+        # ax.set_ylabel("Values")
+        # ax.set_title("GPT Response ")
+        # st.pyplot(fig)
 
     
     with col2:
-        recommend_x=df['Would you recommend this chatbot to fellow students or faculty members for academic support?'].value_counts().index
-        recommend_y=df['Would you recommend this chatbot to fellow students or faculty members for academic support?'].value_counts().values
-        st.subheader("Application Effective")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        # ax.bar(x=ratings_x,height=ratings_y)
-        sns.barplot(x=recommend_x, y=recommend_y, ax=ax, palette="deep")
-        # ax.set_xticks([1, 2, 3, 4, 5])
-        ax.set_xlabel("Category")
-        ax.set_ylabel("Values")
-        ax.set_title("Application Effective")
+        
+        
+        st.write("Would you recommend this chatbot to fellow students or faculty members for academic support?")
+        fig, ax = plt.subplots(figsize=(4,2))
+        ax.pie(df["Would you recommend this chatbot to fellow students or faculty members for academic support?"].value_counts().values, labels=df["Would you recommend this chatbot to fellow students or faculty members for academic support?"].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
+        # Remove extra padding
+        plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+        ax.set_title("Would you recommend this chatbot to fellow students or faculty members for academic support?")
+        # Adjust layout to reduce whitespace
         st.pyplot(fig)
+        
+        
+        # recommend_x=df['Would you recommend this chatbot to fellow students or faculty members for academic support?'].value_counts().index
+        # recommend_y=df['Would you recommend this chatbot to fellow students or faculty members for academic support?'].value_counts().values
+        # st.write("Application Effective")
+        # fig, ax = plt.subplots(figsize=(6, 4))
+        # # ax.bar(x=ratings_x,height=ratings_y)
+        # sns.barplot(x=recommend_x, y=recommend_y, ax=ax, palette="deep")
+        # # ax.set_xticks([1, 2, 3, 4, 5])
+        # ax.set_xlabel("Category")
+        # ax.set_ylabel("Values")
+        # ax.set_title("Application Effective")
+        # st.pyplot(fig)
         
         
         
