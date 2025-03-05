@@ -196,16 +196,18 @@ if selections=="Feedback":
     ratings_y=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().values[0]
     st.write(ratings_x,ratings_y)
 
+    col1,xol2=st.columns(2)
 
-    st.subheader("Bar Plot (Seaborn + Matplotlib)")
-    fig, ax = plt.subplots(figsize=(6, 4))
-    # ax.bar(x=ratings_x,height=ratings_y)
-    sns.barplot(x=ratings_x, y=ratings_y, ax=ax, palette="viridis")
-    ax.set_xticks([1, 2, 3, 4, 5])
-    ax.set_xlabel("Category")
-    ax.set_ylabel("Values")
-    ax.set_title("Bar Plot Example")
-    st.pyplot(fig)
+    with col1:
+        st.subheader("Application Ratings")
+        fig, ax = plt.subplots(figsize=(6, 4))
+        # ax.bar(x=ratings_x,height=ratings_y)
+        sns.barplot(x=ratings_x, y=ratings_y, ax=ax, palette="viridis")
+        ax.set_xticks([1, 2, 3, 4, 5])
+        ax.set_xlabel("Category")
+        ax.set_ylabel("Values")
+        ax.set_title("Application Ratings")
+        st.pyplot(fig)
 
 # # Pie Chart using Matplotlib
 # elif chart_type == "Pie Chart":
