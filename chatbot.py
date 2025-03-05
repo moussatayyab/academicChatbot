@@ -118,11 +118,16 @@ llm_openai = ChatOpenAI(model="gpt-4o-mini")
 
 
 def get_feedback(feedback):
-    return f"""
-    ### What improvements would you like to see in the chatbot?	: {What improvements would you like to see in the chatbot?}
-    What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed? : feedback{}
-    Did you face any issues while using the chatbot? feedback{}
-    
+    return f """
+    ### What improvements would you like to see in the chatbot?	: feedback{What improvements would you like to see in the chatbot?}
+    ### What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed? : feedback{What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed?}
+    ### Did you face any issues while using the chatbot? If yes, please explain. :feedback{Did you face any issues while using the chatbot? If yes, please explain.}
+
+    Give Followings:
+
+    ### Improvoments
+    ### Challenges
+    ## Issues
     """
 
 
@@ -400,8 +405,8 @@ if selections=="Feedback":
         # st.pyplot(fig)
         
         
-        
-        
+        prompt=get_feedback(df[["What improvements would you like to see in the chatbot?","What challenges did you face while using the chatbot for academic support, and how do you think these could be addressed?","Did you face any issues while using the chatbot? If yes, please explain."]].to_dict())
+        st.write(llm_llama3.invoke(prompt).content)
         
         
         # st.subheader("Pie Chart (Matplotlib)")
