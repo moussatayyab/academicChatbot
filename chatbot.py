@@ -212,6 +212,8 @@ if selections=="Feedback":
         fig, ax = plt.subplots(figsize=(2,2))
         ax.pie(df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().values, labels=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"))
         ax.set_title("Pie Chart Example")
+        # Adjust layout to reduce whitespace
+        plt.tight_layout()
         st.pyplot(fig)
 
 
