@@ -183,6 +183,7 @@ if selections=="AI Assistant":
 # https://docs.google.com/spreadsheets/d/1k1MYDZ7n9sIjPTfXFMFHMwEJOMkmhcWzikFVoXlH2SQ/edit?usp=sharing
 
 if selections=="Feedback":
+    
     st.subheader("Welcome to User Feedback Section")
     
     st.write("Please Leave Feedback [Here](https://docs.google.com/forms/d/e/1FAIpQLSekxnpLx5glG_bYHy54m0IrbBIZxEM37dihnBNOeRMR0n9KUg/viewform?usp=header)")
@@ -190,7 +191,7 @@ if selections=="Feedback":
     
     url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
     df=pd.read_csv(url)
-    st.write(df['How satisfied are you with the chatbot\'s overall performance?'].value_counts())
+    st.write(df.columns)
 
     
 
