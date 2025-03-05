@@ -224,7 +224,7 @@ if selections=="Feedback":
         
         
         
-col1,col2=st.columns(2)
+    col1,col2=st.columns(2)
     with col1:
         response_x=df['Which GPT responses do you find the most helpful?'].value_counts().index
         response_y=df['Which GPT responses do you find the most helpful?'].value_counts().values
