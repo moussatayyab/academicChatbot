@@ -200,7 +200,7 @@ if selections=="Feedback":
     st.subheader("Bar Plot (Seaborn + Matplotlib)")
     fig, ax = plt.subplots(figsize=(6, 4))
     # ax.bar(x=ratings_x,height=ratings_y)
-    sns.barplot(x=x, y=y, ax=ax, palette="viridis")
+    sns.barplot(x=ratings_x, y=ratings_y, ax=ax, palette="viridis")
     ax.set_xticks([1, 2, 3, 4, 5])
     ax.set_xlabel("Category")
     ax.set_ylabel("Values")
