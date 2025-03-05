@@ -190,7 +190,7 @@ if selections=="Feedback":
     
     url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
     df=pd.read_csv(url)
-    st.write(df['How satisfied are you with the chatbot\'s overall performance?'])
+    st.write(df['How satisfied are you with the chatbot\'s overall performance?'].value_counts())
 
 
 import streamlit as st
