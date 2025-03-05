@@ -204,7 +204,7 @@ if selections=="Feedback":
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=[ratings_x], y=[ratings_y], ax=ax, palette="viridis")
         ax.set_xticks([1, 2, 3, 4, 5])
-        ax.set_xlabel("Rating")
+        ax.set_xlabel([1, 2, 3, 4, 5])
         ax.set_ylabel("Values")
         ax.set_title("Application Ratings")
         st.pyplot(fig)
