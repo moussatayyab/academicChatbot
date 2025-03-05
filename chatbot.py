@@ -287,6 +287,7 @@ if selections=="Feedback":
 
     col1,col2=st.columns(2)
     with col1:
+        st.write(df.columns[8])
         response_x=df[df.columns[8]].value_counts().index
         response_y=df[df.columns[8]].value_counts().values
         st.subheader("Application Ratings")
