@@ -122,7 +122,6 @@ selections=st.sidebar.selectbox("☰ Menu", ["Home","AI Assistant", "Feedback"])
 
 
 query=""
-query=st.text_input("Write Query Here")
 
 
 if selections=="Home":
@@ -141,6 +140,7 @@ if selections=="Home":
 
 
 if selections=="AI Assistant":
+    query=st.text_input("Write Query Here")
     if st.button("Submit") and query!="":
         rag_chain = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
