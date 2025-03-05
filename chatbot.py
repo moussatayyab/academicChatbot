@@ -315,8 +315,8 @@ if selections=="Feedback":
 
     col1,col2=st.columns(2)
     with col1:
-        relevant_x=df['How accurate was the chatbot\'s information?'].value_counts().index
-        relevant_y=df['How accurate was the chatbot\'s information?'].value_counts().values
+        relevant_x=df['How accurate was the chatbot\’s information?'].value_counts().index
+        relevant_y=df['How accurate was the chatbot\’s information?'].value_counts().values
         st.subheader("Application Ratings")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
