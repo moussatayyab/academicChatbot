@@ -337,7 +337,7 @@ if selections=="Feedback":
     with col1:
         
         st.write(df.columns[8])
-        fig, ax = plt.subplots(figsize=(4,4))
+        fig, ax = plt.subplots(figsize=(4,6))
         ax.pie(df[df.columns[8]].value_counts().values, labels=df[df.columns[8]].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
         # Remove extra padding
         plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
@@ -363,7 +363,7 @@ if selections=="Feedback":
         
         
         st.write("Would you recommend this chatbot to fellow students or faculty members for academic support?")
-        fig, ax = plt.subplots(figsize=(4,4))
+        fig, ax = plt.subplots(figsize=(4,6))
         ax.pie(df["Would you recommend this chatbot to fellow students or faculty members for academic support?"].value_counts().values, labels=df["Would you recommend this chatbot to fellow students or faculty members for academic support?"].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
         # Remove extra padding
         plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
