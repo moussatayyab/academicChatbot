@@ -221,12 +221,12 @@ if selections=="Feedback":
     col1,col2=st.columns(2)
     with col1:
 
-        st.write("Which GPT responses do you find the most helpful?")
+        st.write("Which GPT is Most helpful?")
         fig, ax = plt.subplots(figsize=(4,2))
         ax.pie(df['Which GPT responses do you find the most helpful?'].value_counts().values, labels=df['Which GPT responses do you find the most helpful?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
         # Remove extra padding
         plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
-        ax.set_title("Which GPT responses do you find the most helpful?")
+        ax.set_title("Which GPT is Most helpful?")
         # Adjust layout to reduce whitespace
         st.pyplot(fig)
 
@@ -246,12 +246,12 @@ if selections=="Feedback":
     
     with col2:
 
-        st.write("How easy was it to interact with the chatbot?")
+        st.write("Interaction with the Chatbot")
         fig, ax = plt.subplots(figsize=(4,2))
         ax.pie(df['How easy was it to interact with the chatbot?'].value_counts().values, labels=df['How easy was it to interact with the chatbot?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"),radius=0.6, textprops={'fontsize': 8})
         # Remove extra padding
         plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
-        ax.set_title("How easy was it to interact with the chatbot?")
+        ax.set_title("Interaction with the Chatbot")
         # Adjust layout to reduce whitespace
         st.pyplot(fig)
 
