@@ -280,28 +280,28 @@ if selections=="Feedback":
     with col1:
         satisfactory_x=df['Was the chatbot\'s response time satisfactory?'].value_counts().index
         satisfactory_y=df['Was the chatbot\'s response time satisfactory?'].value_counts().values
-        st.write("Was the chatbot\'s response time satisfactory?")
+        st.write("Is AI Response Time satisfactory?")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=satisfactory_x, y=satisfactory_y, ax=ax, palette="viridis")
         # ax.set_xticks([1, 2, 3, 4, 5])
         ax.set_xlabel("Category")
         ax.set_ylabel("Values")
-        ax.set_title("Was the chatbot\'s response time satisfactory?")
+        ax.set_title("Is AI Response Time satisfactory?")
         st.pyplot(fig)
 
     
     with col2:
         understand_x=df['Did the chatbot understand your questions correctly?'].value_counts().index
         understand_y=df['Did the chatbot understand your questions correctly?'].value_counts().values
-        st.write("Did the chatbot understand your questions correctly?")
+        st.write("Does Chatbot Understand Questions?")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
         sns.barplot(x=understand_x, y=understand_y, ax=ax, palette="deep")
         # ax.set_xticks([1, 2, 3, 4, 5])
         ax.set_xlabel("Category")
         ax.set_ylabel("Values")
-        ax.set_title("Did the chatbot understand your questions correctly?")
+        ax.set_title("Does Chatbot Understand Questions?")
         st.pyplot(fig)
 
     col1,col2=st.columns(2)
