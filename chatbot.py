@@ -199,7 +199,7 @@ if selections=="Feedback":
 
     st.subheader("Bar Plot (Seaborn + Matplotlib)")
     fig, ax = plt.subplots(figsize=(6, 4))
-    ax.plot(x=ratings_x,y=ratings_y)
+    ax.bar(x=ratings_x,y=ratings_y)
     ax.set_xlabel("Category")
     ax.set_ylabel("Values")
     ax.set_title("Bar Plot Example")
