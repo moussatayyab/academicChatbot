@@ -284,7 +284,7 @@ if selections=="Feedback":
         ax.set_title("Application Effective")
         st.pyplot(fig)
 
-        col1,col2=st.columns(2)
+    col1,col2=st.columns(2)
     with col1:
         response_x=df['How accurate was the chatbot\’s information?'].value_counts().index
         response_y=df['How accurate was the chatbot\’s information?'].value_counts().values
@@ -300,18 +300,45 @@ if selections=="Feedback":
 
     
     with col2:
-        understand_x=df['Did the chatbot understand your questions correctly?'].value_counts().index
-        understand_y=df['Did the chatbot understand your questions correctly?'].value_counts().values
+        experience_x=df['Up to what extent this chatbot contributed to your learning experience or academic efficiency?'].value_counts().index
+        experience_y=df['Up to what extent this chatbot contributed to your learning experience or academic efficiency?'].value_counts().values
         st.subheader("Application Effective")
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
-        sns.barplot(x=understand_x, y=understand_y, ax=ax, palette="deep")
+        sns.barplot(x=experience_x, y=experience_y, ax=ax, palette="deep")
         # ax.set_xticks([1, 2, 3, 4, 5])
         ax.set_xlabel("Category")
         ax.set_ylabel("Values")
         ax.set_title("Application Effective")
         st.pyplot(fig)
 
+    col1,col2=st.columns(2)
+    with col1:
+        relevant_x=df['Did the chatbot provide helpful and relevant responses?'].value_counts().index
+        relevant_y=df['How accurate was the chatbot\’s information?'].value_counts().values
+        st.subheader("Application Ratings")
+        fig, ax = plt.subplots(figsize=(6, 4))
+        # ax.bar(x=ratings_x,height=ratings_y)
+        sns.barplot(x=relevant_x, y=relevant_y, ax=ax, palette="viridis")
+        # ax.set_xticks([1, 2, 3, 4, 5])
+        ax.set_xlabel("Category")
+        ax.set_ylabel("Values")
+        ax.set_title("GPT Response ")
+        st.pyplot(fig)
+
+    
+    with col2:
+        recommend_x=df['Would you recommend this chatbot to fellow students or faculty members for academic support?'].value_counts().index
+        recommend_y=df['Would you recommend this chatbot to fellow students or faculty members for academic support?'].value_counts().values
+        st.subheader("Application Effective")
+        fig, ax = plt.subplots(figsize=(6, 4))
+        # ax.bar(x=ratings_x,height=ratings_y)
+        sns.barplot(x=recommend_x, y=recommend_y, ax=ax, palette="deep")
+        # ax.set_xticks([1, 2, 3, 4, 5])
+        ax.set_xlabel("Category")
+        ax.set_ylabel("Values")
+        ax.set_title("Application Effective")
+        st.pyplot(fig)
         
         
         
