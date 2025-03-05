@@ -192,39 +192,25 @@ if selections=="Feedback":
     df=pd.read_csv(url)
     st.write(df['How satisfied are you with the chatbot\'s overall performance?'].value_counts())
 
+    ratings_x=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().index
+    ratings_y=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().values
 
-import streamlit as st
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
 
-# Sample data
-data = {'Category': ['A', 'B', 'C', 'D'],
-        'Values': [30, 20, 50, 40]}
-df = pd.DataFrame(data)
-
-st.title("Bar Plot and Pie Chart in Streamlit")
-
-# Select visualization
-chart_type = st.selectbox("Select Chart Type", ["Bar Plot", "Pie Chart"])
-
-# Bar Plot using Seaborn
-if chart_type == "Bar Plot":
     st.subheader("Bar Plot (Seaborn + Matplotlib)")
     fig, ax = plt.subplots(figsize=(6, 4))
-    sns.barplot(x='Category', y='Values', data=df, palette="viridis", ax=ax)
+    ax.plot(ratings_x,ratings_y)
     ax.set_xlabel("Category")
     ax.set_ylabel("Values")
     ax.set_title("Bar Plot Example")
     st.pyplot(fig)
 
-# Pie Chart using Matplotlib
-elif chart_type == "Pie Chart":
-    st.subheader("Pie Chart (Matplotlib)")
-    fig, ax = plt.subplots(figsize=(6, 6))
-    ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%', colors=sns.color_palette("pastel"))
-    ax.set_title("Pie Chart Example")
-    st.pyplot(fig)
+# # Pie Chart using Matplotlib
+# elif chart_type == "Pie Chart":
+#     st.subheader("Pie Chart (Matplotlib)")
+#     fig, ax = plt.subplots(figsize=(6, 6))
+#     ax.pie(df['Values'], labels=df['Category'], autopct='%1.1f%%', colors=sns.color_palette("pastel"))
+#     ax.set_title("Pie Chart Example")
+#     st.pyplot(fig)
 
 
     
