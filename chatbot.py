@@ -194,6 +194,7 @@ if selections=="Feedback":
 
     ratings_x=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().index
     ratings_y=df['How satisfied are you with the chatbot\'s overall performance?'].value_counts().values
+    st.write(ratings_x,ratings_y)
 
 
     st.subheader("Bar Plot (Seaborn + Matplotlib)")
