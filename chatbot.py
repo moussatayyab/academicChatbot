@@ -307,8 +307,8 @@ if selections=="Feedback":
     col1,col2=st.columns(2)
     with col1:
         # st.write(df.columns[7])
-        response_x=df[df.columns[8]].value_counts().index
-        response_y=df[df.columns[8]].value_counts().values
+        response_x=df[df.columns[7]].value_counts().index
+        response_y=df[df.columns[7]].value_counts().values
         st.write(df.columns[8])
         fig, ax = plt.subplots(figsize=(6, 4))
         # ax.bar(x=ratings_x,height=ratings_y)
@@ -316,7 +316,7 @@ if selections=="Feedback":
         # ax.set_xticks([1, 2, 3, 4, 5])
         ax.set_xlabel("Category")
         ax.set_ylabel("Values")
-        ax.set_title(df.columns[8])
+        ax.set_title(df.columns[7])
         st.pyplot(fig)
 
     
