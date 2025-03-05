@@ -211,9 +211,12 @@ if selections=="Feedback":
         st.subheader("Pie Chart (Matplotlib)")
         fig, ax = plt.subplots(figsize=(1,4.5))
         ax.pie(df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().values, labels=df['Did the chatbot effectively assist you in finding academic resources or answering your study-related questions?'].value_counts().index, autopct='%1.1f%%', colors=sns.color_palette("pastel"))
+        # Remove extra padding
+        plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+        
         ax.set_title("Pie Chart Example")
         # Adjust layout to reduce whitespace
-        plt.tight_layout()
+        
         st.pyplot(fig)
 
 
