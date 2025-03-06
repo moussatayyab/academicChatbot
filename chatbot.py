@@ -54,37 +54,37 @@ with open(download_db(),'r') as f:
 
 os.environ["OPENAI_API_KEY"] = k
 
-# Load all PDFs in a directory
-pdf_folder = "database"
-loader = DirectoryLoader(pdf_folder, glob="*.pdf", loader_cls=PyPDFLoader)
+# # Load all PDFs in a directory
+# pdf_folder = "database"
+# loader = DirectoryLoader(pdf_folder, glob="*.pdf", loader_cls=PyPDFLoader)
 
-# Load documents
-documents = loader.load()
+# # Load documents
+# documents = loader.load()
 
-st.write(f"Loaded {len(documents)} documents from the directory")
+# st.write(f"Loaded {len(documents)} documents from the directory")
 
-text_splitter = TokenTextSplitter(encoding_name='o200k_base', chunk_size=100, chunk_overlap=20)
-texts = text_splitter.split_documents(documents)
+# text_splitter = TokenTextSplitter(encoding_name='o200k_base', chunk_size=100, chunk_overlap=20)
+# texts = text_splitter.split_documents(documents)
 # st.write(texts)
 from langchain.embeddings import OpenAIEmbeddings
 
 # Assuming you have OpenAI API key set up in your environment
 embeddings = OpenAIEmbeddings()
-vectorstore = FAISS.from_documents(documents=texts, embedding=embeddings)
-# Retrieve and generate using the relevant snippets of the blog.
-retriever = vectorstore.as_retriever()
+# vectorstore = FAISS.from_documents(documents=texts, embedding=embeddings)
+# # Retrieve and generate using the relevant snippets of the blog.
+# retriever = vectorstore.as_retriever()
 
 
 # Save FAISS index to a file
-faiss.write_index(vectorstore.index, "faiss_index.bin")
+# faiss.write_index(vectorstore.index, "faiss_index.bin")
 
-# Save metadata separately using pickle
-with open("faiss_metadata.pkl", "wb") as f:
-    pickle.dump(vectorstore.docstore._dict, f)
+# # Save metadata separately using pickle
+# with open("faiss_metadata.pkl", "wb") as f:
+#     pickle.dump(vectorstore.docstore._dict, f)
 
-# Save index-to-docstore mapping (important for retrieval)
-with open("faiss_index_to_docstore.pkl", "wb") as f:
-    pickle.dump(vectorstore.index_to_docstore_id, f)
+# # Save index-to-docstore mapping (important for retrieval)
+# with open("faiss_index_to_docstore.pkl", "wb") as f:
+#     pickle.dump(vectorstore.index_to_docstore_id, f)
 
 
 # Load FAISS index
