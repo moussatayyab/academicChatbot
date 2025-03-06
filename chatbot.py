@@ -153,7 +153,7 @@ custom_prompt = PromptTemplate(
 ############################################################################################################################################################
 
 
-st.title("Student Assistant")
+st.title("Academic Assistant")
 selections=st.sidebar.selectbox("☰ Menu", ["Home","AI Assistant", "Feedback"])
 
 
