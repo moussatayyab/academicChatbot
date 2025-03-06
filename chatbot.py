@@ -57,12 +57,10 @@ documents = loader.load()
 
 st.write(f"Loaded {len(documents)} documents from the directory")
 
+text_splitter = TokenTextSplitter(encoding_name='o200k_base', chunk_size=100, chunk_overlap=20)
+texts = text_splitter.split_documents(documents)
+st.write(texts)
 
-
-text_splitter = TokenTextSplitter(encoding_name='o200k_base', chunk_size=50, chunk_overlap=0)
-texts = text_splitter.split_documents(data)
-len(texts)
->>> 105
 
 
 
