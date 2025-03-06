@@ -72,7 +72,9 @@ vector_store = FAISS.from_documents(documents=texts, embedding=embeddings)
 retriever = vector_store.as_retriever()
 # Save FAISS index to a file
 faiss.write_index(vector_store.index, "faiss_index.bin")
-
+# Save metadata separately using pickle
+with open("faiss_metadata.pkl", "wb") as f:
+    pickle.dump(vector_store.docstore._dict, f)
 
 
 
