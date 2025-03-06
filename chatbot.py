@@ -29,7 +29,6 @@ from langchain.docstore.document import Document
 from datetime import datetime
 import gdown
 from langchain.document_loaders import DirectoryLoader
-
 from langchain_text_splitters import TokenTextSplitter
 
 file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
