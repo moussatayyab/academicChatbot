@@ -18,3 +18,5 @@ faiss-cpu
 langchainhub
 langchain-huggingface
 gdown
+langchain-text-splitters
+tiktoken
