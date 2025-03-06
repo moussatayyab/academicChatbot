@@ -205,7 +205,7 @@ if selections=="Feedback":
     
     url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
     df=pd.read_csv(url)
-    st.write(df.columns)
+    # st.write(df.columns)
 
 
     col1,col2=st.columns(2)
