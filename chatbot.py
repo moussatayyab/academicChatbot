@@ -32,6 +32,7 @@ from langchain.document_loaders import DirectoryLoader
 from langchain_text_splitters import TokenTextSplitter
 import faiss
 import pickle
+from langchain.docstore.in_memory import InMemoryDocstor
 
 
 
