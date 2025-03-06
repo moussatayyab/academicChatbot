@@ -30,6 +30,10 @@ from datetime import datetime
 import gdown
 from langchain.document_loaders import DirectoryLoader
 from langchain_text_splitters import TokenTextSplitter
+import faiss
+import pickle
+
+
 
 file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
 output_file = "open_ai_key.txt"
@@ -66,7 +70,8 @@ embeddings = OpenAIEmbeddings()
 vector_store = FAISS.from_documents(documents=texts, embedding=embeddings)
 # Retrieve and generate using the relevant snippets of the blog.
 retriever = vector_store.as_retriever()
-
+# Save FAISS index to a file
+faiss.write_index(vector_store.index, "faiss_index.bin")
 
 
 
@@ -139,11 +144,9 @@ llm_openai = ChatOpenAI(model="gpt-4o-mini")
 ######################################################################################################################################
 
 
-# prompt = hub.pull("rlm/rag-prompt")
-
-
-# def format_docs(docs):
-#     return "\n\n".join(doc.page_content for doc in docs)
+prompt = hub.pull("rlm/rag-prompt")
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
 
 
 
