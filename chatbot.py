@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 import pandas as pd
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import PyPDFDirectoryLoader
@@ -21,8 +20,6 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
-# Load environment variables
-load_dotenv()
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.docstore.document import Document
@@ -33,11 +30,15 @@ from langchain_text_splitters import TokenTextSplitter
 import faiss
 import pickle
 from langchain_community.docstore.in_memory import InMemoryDocstore  # ✅ Correct
-
-# from langchain.docstore.in_memory import InMemoryDocstor
-
+from langchain.embeddings import OpenAIEmbeddings
 
 
+
+# Load environment variables
+load_dotenv()
+
+
+###############################################################setting openai ai api##################################################################
 file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
 output_file = "open_ai_key.txt"
 
@@ -50,10 +51,8 @@ with open(download_db(),'r') as f:
     f=f.read()
     # st.write(f)
     k=f
-    
-
 os.environ["OPENAI_API_KEY"] = k
-
+#####################################################################################################################################################
 # # Load all PDFs in a directory
 # pdf_folder = "database"
 # loader = DirectoryLoader(pdf_folder, glob="*.pdf", loader_cls=PyPDFLoader)
@@ -66,27 +65,13 @@ os.environ["OPENAI_API_KEY"] = k
 # text_splitter = TokenTextSplitter(encoding_name='o200k_base', chunk_size=100, chunk_overlap=20)
 # texts = text_splitter.split_documents(documents)
 # st.write(texts)
-from langchain.embeddings import OpenAIEmbeddings
-
 # Assuming you have OpenAI API key set up in your environment
 embeddings = OpenAIEmbeddings()
 # vectorstore = FAISS.from_documents(documents=texts, embedding=embeddings)
 # # Retrieve and generate using the relevant snippets of the blog.
 # retriever = vectorstore.as_retriever()
 
-
-# Save FAISS index to a file
-# faiss.write_index(vectorstore.index, "faiss_index.bin")
-
-# # Save metadata separately using pickle
-# with open("faiss_metadata.pkl", "wb") as f:
-#     pickle.dump(vectorstore.docstore._dict, f)
-
-# # Save index-to-docstore mapping (important for retrieval)
-# with open("faiss_index_to_docstore.pkl", "wb") as f:
-#     pickle.dump(vectorstore.index_to_docstore_id, f)
-
-
+########################################################################### Loading the vector db ###########################################################
 # Load FAISS index
 index = faiss.read_index("faiss_index.bin")
 
@@ -108,7 +93,6 @@ vector_store = FAISS(
     docstore=docstore,  # ✅ Wrap docstore properly
     index_to_docstore_id=index_to_docstore_id
 )
-
 # Set up retriever
 retriever = vector_store.as_retriever()
 
