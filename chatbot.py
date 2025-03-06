@@ -28,10 +28,25 @@ from langchain_community.vectorstores import FAISS
 from langchain.docstore.document import Document
 from datetime import datetime
 import gdown
-###############################################################################################
-
-
 from langchain.document_loaders import DirectoryLoader
+
+from langchain_text_splitters import TokenTextSplitter
+
+file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
+output_file = "open_ai_key.txt"
+
+def download_db():
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, output_file, quiet=False)
+    return output_file
+k=""
+with open(download_db(),'r') as f:
+    f=f.read()
+    # st.write(f)
+    k=f
+    
+
+os.environ["OPENAI_API_KEY"] = k
 
 # Load all PDFs in a directory
 pdf_folder = "database"
@@ -43,9 +58,25 @@ documents = loader.load()
 st.write(f"Loaded {len(documents)} documents from the directory")
 
 
-files=os.listdir()
-###############################################################################################
-files=[file for file in files if file.split(".")[-1]=="pdf"]
+
+text_splitter = TokenTextSplitter(encoding_name='o200k_base', chunk_size=50, chunk_overlap=0)
+texts = text_splitter.split_documents(data)
+len(texts)
+>>> 105
+
+
+
+
+
+
+
+
+
+
+
+# files=os.listdir()
+# ###############################################################################################
+# files=[file for file in files if file.split(".")[-1]=="pdf"]
 
 ###############################################################################################
 # def get_pdf_text(pdf_docs):
@@ -104,21 +135,7 @@ llm_llama3 = ChatGroq(
 )
 
 ################################################################################################################################
-file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
-output_file = "open_ai_key.txt"
 
-def download_db():
-    url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, output_file, quiet=False)
-    return output_file
-k=""
-with open(download_db(),'r') as f:
-    f=f.read()
-    # st.write(f)
-    k=f
-    
-
-os.environ["OPENAI_API_KEY"] = k
 llm_openai = ChatOpenAI(model="gpt-4o-mini")
 ######################################################################################################################################
 
