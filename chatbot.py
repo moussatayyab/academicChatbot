@@ -29,6 +29,20 @@ from langchain.docstore.document import Document
 from datetime import datetime
 import gdown
 ###############################################################################################
+
+
+from langchain.document_loaders import DirectoryLoader
+
+# Load all PDFs in a directory
+pdf_folder = "database"
+loader = DirectoryLoader(pdf_folder, glob="*.pdf", loader_cls=PyPDFLoader)
+
+# Load documents
+documents = loader.load()
+
+st.write(f"Loaded {len(documents)} documents from the directory")
+
+
 files=os.listdir()
 ###############################################################################################
 files=[file for file in files if file.split(".")[-1]=="pdf"]
