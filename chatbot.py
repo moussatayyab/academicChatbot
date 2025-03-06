@@ -59,6 +59,10 @@ st.write(f"Loaded {len(documents)} documents from the directory")
 text_splitter = TokenTextSplitter(encoding_name='o200k_base', chunk_size=100, chunk_overlap=20)
 texts = text_splitter.split_documents(documents)
 # st.write(texts)
+from langchain.embeddings import OpenAIEmbeddings
+
+# Assuming you have OpenAI API key set up in your environment
+embeddings = OpenAIEmbeddings()
 vector_store = FAISS.from_documents(documents=texts, embedding=embeddings)
 # Retrieve and generate using the relevant snippets of the blog.
 retriever = vector_store.as_retriever()
