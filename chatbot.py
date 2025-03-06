@@ -58,12 +58,10 @@ st.write(f"Loaded {len(documents)} documents from the directory")
 
 text_splitter = TokenTextSplitter(encoding_name='o200k_base', chunk_size=100, chunk_overlap=20)
 texts = text_splitter.split_documents(documents)
-st.write(texts)
-
-
-
-
-
+# st.write(texts)
+vector_store = FAISS.from_documents(documents=texts, embedding=embeddings)
+# Retrieve and generate using the relevant snippets of the blog.
+retriever = vector_store.as_retriever()
 
 
 
@@ -189,16 +187,16 @@ if selections=="Home":
     
 if selections=="AI Assistant":
     query=st.text_input("Write Query Here")
-    # if st.button("Submit") and query!="":
-    #     rag_chain = (
-    #     {"context": retriever | format_docs, "question": RunnablePassthrough()}
-    #     | prompt
-    #     | llm_openai
-    #     | StrOutputParser()
-    #     )
-    #     st.subheader("OpenAI GPT Response")
-    #     res=rag_chain.invoke(query)
-    #     st.write(res)
+    if st.button("Submit") and query!="":
+        rag_chain = (
+        {"context": retriever | format_docs, "question": RunnablePassthrough()}
+        | prompt
+        | llm_openai
+        | StrOutputParser()
+        )
+        st.subheader("OpenAI GPT Response")
+        res=rag_chain.invoke(query)
+        st.write(res)
     
     #     # # performing a similarity search to fetch the most relevant context
     #     st.write("")
