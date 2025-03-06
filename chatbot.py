@@ -67,15 +67,47 @@ from langchain.embeddings import OpenAIEmbeddings
 
 # Assuming you have OpenAI API key set up in your environment
 embeddings = OpenAIEmbeddings()
-vector_store = FAISS.from_documents(documents=texts, embedding=embeddings)
+vectorstore = FAISS.from_documents(documents=texts, embedding=embeddings)
 # Retrieve and generate using the relevant snippets of the blog.
 retriever = vector_store.as_retriever()
+
+
 # Save FAISS index to a file
-faiss.write_index(vector_store.index, "faiss_index.bin")
+faiss.write_index(vectorstore.index, "faiss_index.bin")
+
 # Save metadata separately using pickle
 with open("faiss_metadata.pkl", "wb") as f:
-    pickle.dump(vector_store.docstore._dict, f)
+    pickle.dump(vectorstore.docstore._dict, f)
 
+# Save index-to-docstore mapping (important for retrieval)
+with open("faiss_index_to_docstore.pkl", "wb") as f:
+    pickle.dump(vectorstore.index_to_docstore_id, f)
+
+
+# Load FAISS index
+index = faiss.read_index("faiss_index.bin")
+
+# Load metadata
+with open("faiss_metadata.pkl", "rb") as f:
+    docstore_data = pickle.load(f)
+
+# ✅ Fix: Wrap the docstore dictionary inside InMemoryDocstore
+docstore = InMemoryDocstore(docstore_data)
+
+# Load index-to-docstore mapping
+with open("faiss_index_to_docstore.pkl", "rb") as f:
+    index_to_docstore_id = pickle.load(f)
+
+# ✅ Fix: Ensure FAISS is initialized with proper embeddings
+vector_store = FAISS(
+    index=index,
+    embedding_function=embeddings,  # ✅ Ensure embeddings are passed correctly
+    docstore=docstore,  # ✅ Wrap docstore properly
+    index_to_docstore_id=index_to_docstore_id
+)
+
+# Set up retriever
+retriever = vector_store.as_retriever()
 
 
 
