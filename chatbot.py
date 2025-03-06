@@ -69,7 +69,7 @@ from langchain.embeddings import OpenAIEmbeddings
 embeddings = OpenAIEmbeddings()
 vectorstore = FAISS.from_documents(documents=texts, embedding=embeddings)
 # Retrieve and generate using the relevant snippets of the blog.
-retriever = vector_store.as_retriever()
+retriever = vectorstore.as_retriever()
 
 
 # Save FAISS index to a file
