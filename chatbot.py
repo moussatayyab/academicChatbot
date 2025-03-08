@@ -30,6 +30,8 @@ import faiss
 import pickle
 from langchain_community.docstore.in_memory import InMemoryDocstore  # ✅ Correct
 from langchain.embeddings import OpenAIEmbeddings
+from langchain.callbacks import get_openai_callback
+tiktoken
 
 
 
@@ -179,11 +181,10 @@ if selections=="AI Assistant":
         | StrOutputParser()
         )
         st.subheader("OpenAI GPT Response")
-        res=rag_chain.invoke(query)
-        st.write(res)
+        # res=rag_chain.invoke(query)
+        # st.write(res)
 
-        from langchain.callbacks import get_openai_callback
-
+        
         with get_openai_callback() as cb:
             res = rag_chain.invoke(query)
             st.write(res)
@@ -209,6 +210,27 @@ if selections=="AI Assistant":
         st.subheader("Meta Llama3 GPT Response")
         res=rag_chain.invoke(query)
         st.write(res)
+      
+        # Load tokenizer for LLaMA3 (use "gpt-3.5-turbo" if no specific tokenizer for LLaMA)
+        encoding = tiktoken.get_encoding("cl100k_base")  
+        
+        query_text = query  # User input
+        retrieved_docs = retriever | format_docs  # Retrieved context
+        
+        # Combine user query + retrieved context
+        full_prompt = f"Context:\n{retrieved_docs}\n\nQuestion:\n{query_text}"
+        
+        # Estimate token count
+        token_count = len(encoding.encode(full_prompt))
+        
+        st.write(f"Estimated Input Tokens: {token_count}")
+
+# Invoke RAG chain
+res = rag_chain.invoke(query)
+st.write(res)
+
+
+
 
 if selections=="Feedback":
     
