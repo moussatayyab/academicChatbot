@@ -61,7 +61,7 @@ st.write(df)
 #     f=f.read()
 #     # st.write(f)
 #     k=f
-os.environ["OPENAI_API_KEY"] = df
+os.environ["OPENAI_API_KEY"] = df.values
 #####################################################################################################################################################
 # # Load all PDFs in a directory
 # pdf_folder = "database"
