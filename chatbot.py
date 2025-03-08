@@ -208,23 +208,64 @@ if selections=="AI Assistant":
         tokens_df.to_csv("token_usage.csv")
         # st.write(tokens_df)
 
-
-        os.system("git config --global user.email 'muhammadarish420@gmail.com'")
-        os.system("git config --global user.name 'arish420'")
-        os.system("git clone https://github.com/arish420/assistant_mistral.git")
-        os.system("cp token_usage.csv assistant_mistral/")
-        os.system("cd your_repo && git add . && git commit -m 'Added file' && git push origin main")
-        # os.system("git config --global user.email 'your_email@example.com'")
-        # os.system("git config --global user.name 'your_username'")
-        # os.system("git add my_dataframe.csv")
-        # os.system("git commit -m 'Updated DataFrame'")
-        # os.system("git push origin main")
-
-
-
+        import streamlit as st
+        import pandas as pd
+        import requests
+        import base64
+        import json
+        from io import StringIO
         
-      
+        # GitHub Configuration
+        GITHUB_REPO = "arish420/assistant_mistral"
+        GITHUB_BRANCH = "main"  # Change if using a different branch
+        GITHUB_TOKEN = "M1CTlA0qk3Re79CGMxWB7sRw9ixNCLuclQsxsUzugm0"
+        FILENAME = "dataframe.csv"  # Change filename if needed
         
+        # Sample DataFrame
+        data = {
+            "Name": ["Alice", "Bob", "Charlie"],
+            "Age": [25, 30, 35],
+            "City": ["New York", "Berlin", "Tokyo"]
+        }
+        df = pd.DataFrame(data)
+        
+        # Convert DataFrame to CSV
+        csv_buffer = StringIO()
+        df.to_csv(csv_buffer, index=False)
+        csv_content = csv_buffer.getvalue()
+        encoded_content = base64.b64encode(csv_content.encode()).decode()
+        
+        # GitHub API URL
+        url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{FILENAME}"
+        
+        # Check if file exists to get its SHA
+        headers = {"Authorization": f"token {GITHUB_TOKEN}"}
+        response = requests.get(url, headers=headers)
+        sha = response.json().get("sha") if response.status_code == 200 else None
+        
+        # Prepare API request data
+        data = {
+            "message": f"Upload {FILENAME} via Streamlit",
+            "content": encoded_content,
+            "branch": GITHUB_BRANCH
+        }
+        if sha:
+            data["sha"] = sha  # Required for updating an existing file
+        
+        # Upload File to GitHub
+        response = requests.put(url, headers=headers, data=json.dumps(data))
+        
+        # Streamlit UI
+        st.title("Upload DataFrame to GitHub")
+        st.write("### Data Preview")
+        st.dataframe(df)
+        
+        if response.status_code in [200, 201]:
+            st.success(f"DataFrame saved as '{FILENAME}' on GitHub.")
+            st.markdown(f"[View on GitHub](https://github.com/{GITHUB_REPO}/blob/{GITHUB_BRANCH}/{FILENAME})")
+        else:
+            st.error(f"Failed to upload: {response.json()}")
+
 
 
 
