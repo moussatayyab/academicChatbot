@@ -181,7 +181,7 @@ if selections=="Home":
     ✅ Timetable & Schedule Support – Helps students check class schedules.  
     ✅ School Announcements & Notices – Delivers updates on events and policies.  
     ✅ Subject Guidance – Answers subject-related queries.  
-    ✅ Interactive & Voice Support – Allows students to communicate via text or voice.  """)
+    ✅ Interactive – Allows students to communicate via text.  """)
     
     
 if selections=="AI Assistant":
