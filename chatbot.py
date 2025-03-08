@@ -45,15 +45,15 @@ url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
 df=pd.read_csv(url)
 # st.write(df)
 
-# def download_db():
-#     url = f"https://drive.google.com/uc?id={file_id}"
-#     gdown.download(url, output_file, quiet=False)
-#     return output_file
-# k=""
-# with open(download_db(),'r') as f:
-#     f=f.read()
-#     # st.write(f)
-#     k=f
+def download_db():
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, output_file, quiet=False)
+    return output_file
+k=""
+with open(download_db(),'r') as f:
+    f=f.read()
+    # st.write(f)
+    k=f
 os.environ["OPENAI_API_KEY"] = df.keys()[0]
 #####################################################################################################################################################
 # # Load all PDFs in a directory
@@ -218,7 +218,7 @@ if selections=="AI Assistant":
         # GitHub Configuration
         GITHUB_REPO = "arish420/assistant_mistral"
         GITHUB_BRANCH = "main"  # Change if using a different branch
-        GITHUB_TOKEN = "M1CTlA0qk3Re79CGMxWB7sRw9ixNCLuclQsxsUzugm0"
+        GITHUB_TOKEN = k
         FILENAME = "dataframe.csv"  # Change filename if needed
         
         # Sample DataFrame
