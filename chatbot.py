@@ -48,20 +48,20 @@ sheet_id = '1Dp6Y9ps4md393F5eRZzaZhu044k4JCmrbYDxWmQ6t2g' # replace with your sh
     
 url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
 df=pd.read_csv(url)
-st.write(df.loc[0,:])
+st.write(df)
 
 
 
-def download_db():
-    url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, output_file, quiet=False)
-    return output_file
-k=""
-with open(download_db(),'r') as f:
-    f=f.read()
-    # st.write(f)
-    k=f
-os.environ["OPENAI_API_KEY"] = k
+# def download_db():
+#     url = f"https://drive.google.com/uc?id={file_id}"
+#     gdown.download(url, output_file, quiet=False)
+#     return output_file
+# k=""
+# with open(download_db(),'r') as f:
+#     f=f.read()
+#     # st.write(f)
+#     k=f
+os.environ["OPENAI_API_KEY"] = df
 #####################################################################################################################################################
 # # Load all PDFs in a directory
 # pdf_folder = "database"
