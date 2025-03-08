@@ -209,8 +209,9 @@ if selections=="AI Assistant":
         res=rag_chain.invoke(query)
         st.write(res.content)
         tokens["open_ai"]=res.response_metadata['token_usage']['total_tokens']
-        pd.DataFrame(tokens.items()).to_csv("token_usage.csv")
-        st.write(pd.DataFrame(tokens.items()))
+        tokens_df=pd.DataFrame(tokens.items())
+        tokens_df.to_csv("token_usage.csv")
+        st.write(tokens_df)
 
 
 
