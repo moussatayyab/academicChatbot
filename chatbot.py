@@ -41,6 +41,17 @@ load_dotenv()
 file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
 output_file = "open_ai_key.txt"
 
+
+# https://docs.google.com/spreadsheets/d/1Dp6Y9ps4md393F5eRZzaZhu044k4JCmrbYDxWmQ6t2g/edit?gid=0#gid=0
+
+sheet_id = '1Dp6Y9ps4md393F5eRZzaZhu044k4JCmrbYDxWmQ6t2g' # replace with your sheet's ID
+    
+url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+df=pd.read_csv(url)
+st.write(df)
+
+
+
 def download_db():
     url = f"https://drive.google.com/uc?id={file_id}"
     gdown.download(url, output_file, quiet=False)
