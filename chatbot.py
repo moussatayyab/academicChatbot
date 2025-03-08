@@ -45,15 +45,15 @@ url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
 df=pd.read_csv(url)
 # st.write(df)
 
-def download_db():
-    url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, output_file, quiet=False)
-    return output_file
-k=""
-with open(download_db(),'r') as f:
-    f=f.read()
-    # st.write(f)
-    k=f
+# def download_db():
+#     url = f"https://drive.google.com/uc?id={file_id}"
+#     gdown.download(url, output_file, quiet=False)
+#     return output_file
+# k=""
+# with open(download_db(),'r') as f:
+#     f=f.read()
+#     # st.write(f)
+#     k=f
 os.environ["OPENAI_API_KEY"] = df.keys()[0]
 #####################################################################################################################################################
 # # Load all PDFs in a directory
@@ -164,7 +164,7 @@ selections=st.sidebar.selectbox("☰ Menu", ["Home","AI Assistant", "Feedback"])
 
 
 query=""
-tokens={}
+# tokens={}
 if selections=="Home":
     st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant designed to help students with their academic and school-related queries. It provides instant responses to common questions, assists with homework, shares important school updates, and offers guidance on schedules, subjects, and extracurricular activities.  
      Key Features:  
@@ -187,7 +187,7 @@ if selections=="AI Assistant":
         res=rag_chain.invoke(query)
         st.write(res.content)
         # st.write(res.response_metadata['token_usage']['total_tokens'])
-        tokens["open_ai"]=res.response_metadata['token_usage']['total_tokens']
+        # tokens["open_ai"]=res.response_metadata['token_usage']['total_tokens']
 
     
         # # performing a similarity search to fetch the most relevant context
@@ -204,67 +204,9 @@ if selections=="AI Assistant":
         res=rag_chain.invoke(query)
         st.write(res.content)
         tokens["open_ai"]=res.response_metadata['token_usage']['total_tokens']
-        tokens_df=pd.DataFrame(tokens.items())
-        tokens_df.to_csv("token_usage.csv")
+        # tokens_df=pd.DataFrame(tokens.items())
+        # tokens_df.to_csv("token_usage.csv")
         # st.write(tokens_df)
-
-        import streamlit as st
-        import pandas as pd
-        import requests
-        import base64
-        import json
-        from io import StringIO
-        
-        # GitHub Configuration
-        GITHUB_REPO = "arish420/assistant_mistral"
-        GITHUB_BRANCH = "main"  # Change if using a different branch
-        GITHUB_TOKEN = k
-        FILENAME = "dataframe.csv"  # Change filename if needed
-        
-        # Sample DataFrame
-        data = {
-            "Name": ["Alice", "Bob", "Charlie"],
-            "Age": [25, 30, 35],
-            "City": ["New York", "Berlin", "Tokyo"]
-        }
-        df = pd.DataFrame(data)
-        
-        # Convert DataFrame to CSV
-        csv_buffer = StringIO()
-        df.to_csv(csv_buffer, index=False)
-        csv_content = csv_buffer.getvalue()
-        encoded_content = base64.b64encode(csv_content.encode()).decode()
-        
-        # GitHub API URL
-        url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{FILENAME}"
-        
-        # Check if file exists to get its SHA
-        headers = {"Authorization": f"token {GITHUB_TOKEN}"}
-        response = requests.get(url, headers=headers)
-        sha = response.json().get("sha") if response.status_code == 200 else None
-        
-        # Prepare API request data
-        data = {
-            "message": f"Upload {FILENAME} via Streamlit",
-            "content": encoded_content,
-            "branch": GITHUB_BRANCH
-        }
-        if sha:
-            data["sha"] = sha  # Required for updating an existing file
-        
-        # Upload File to GitHub
-        response = requests.put(url, headers=headers, data=json.dumps(data))
-        
-        # Streamlit UI
-        st.title("Upload DataFrame to GitHub")
-        st.write("### Data Preview")
-        st.dataframe(df)
-        
-        if response.status_code in [200, 201]:
-            st.success(f"DataFrame saved as '{FILENAME}' on GitHub.")
-            st.markdown(f"[View on GitHub](https://github.com/{GITHUB_REPO}/blob/{GITHUB_BRANCH}/{FILENAME})")
-        else:
-            st.error(f"Failed to upload: {response.json()}")
 
 
 
