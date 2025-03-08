@@ -48,7 +48,7 @@ sheet_id = '1Dp6Y9ps4md393F5eRZzaZhu044k4JCmrbYDxWmQ6t2g' # replace with your sh
     
 url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
 df=pd.read_csv(url)
-st.write(df)
+st.write(df.values)
 
 
 
