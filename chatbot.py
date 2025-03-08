@@ -225,9 +225,9 @@ if selections=="AI Assistant":
         
         st.write(f"Estimated Input Tokens: {token_count}")
 
-# Invoke RAG chain
-res = rag_chain.invoke(query)
-st.write(res)
+        # Invoke RAG chain
+        res = rag_chain.invoke(query)
+        st.write(res)
 
 
 
