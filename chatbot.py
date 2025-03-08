@@ -205,7 +205,6 @@ if selections=="AI Assistant":
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
         | custom_prompt
         | llm_llama3
-        | StrOutputParser()
         )
         st.subheader("Meta Llama3 GPT Response")
         res=rag_chain.invoke(query)
