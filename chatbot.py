@@ -31,7 +31,7 @@ import pickle
 from langchain_community.docstore.in_memory import InMemoryDocstore  # ✅ Correct
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.callbacks import get_openai_callback
-tiktoken
+import tiktoken
 
 
 
