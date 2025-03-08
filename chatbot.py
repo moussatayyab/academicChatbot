@@ -33,8 +33,6 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.callbacks import get_openai_callback
 import tiktoken
 
-
-
 # Load environment variables
 load_dotenv()
 ###############################################################setting openai ai api##################################################################
@@ -61,7 +59,7 @@ st.write(df)
 #     f=f.read()
 #     # st.write(f)
 #     k=f
-os.environ["OPENAI_API_KEY"] = df.values[0]
+os.environ["OPENAI_API_KEY"] = df.keys()[0]
 #####################################################################################################################################################
 # # Load all PDFs in a directory
 # pdf_folder = "database"
