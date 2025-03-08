@@ -169,7 +169,7 @@ selections=st.sidebar.selectbox("☰ Menu", ["Home","AI Assistant", "Feedback"])
 
 
 query=""
-
+tokens={}
 if selections=="Home":
     st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant designed to help students with their academic and school-related queries. It provides instant responses to common questions, assists with homework, shares important school updates, and offers guidance on schedules, subjects, and extracurricular activities.  
      Key Features:  
@@ -190,7 +190,8 @@ if selections=="AI Assistant":
         )
         st.subheader("OpenAI GPT Response")
         res=rag_chain.invoke(query)
-        st.write(res)
+        st.write(res.content)
+        tokens["open_ai"]=res['total_tokens']
 
     
         # # performing a similarity search to fetch the most relevant context
@@ -205,7 +206,14 @@ if selections=="AI Assistant":
         )
         st.subheader("Meta Llama3 GPT Response")
         res=rag_chain.invoke(query)
-        st.write(res)
+        st.write(res.content)
+        tokens["open_ai"]=res['total_tokens']
+        pd.DataFrame(tokens.items()).to_csv("token_usage")
+        st.write(pd.DataFrame(tokens.items()))
+
+
+
+        
       
         
 
