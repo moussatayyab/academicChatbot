@@ -181,6 +181,19 @@ if selections=="AI Assistant":
         st.subheader("OpenAI GPT Response")
         res=rag_chain.invoke(query)
         st.write(res)
+
+        from langchain.callbacks import get_openai_callback
+
+        with get_openai_callback() as cb:
+            res = rag_chain.invoke(query)
+            st.write(res)
+        
+            # Display token usage
+            st.write(f"Prompt Tokens: {cb.prompt_tokens}")
+            st.write(f"Completion Tokens: {cb.completion_tokens}")
+            st.write(f"Total Tokens: {cb.total_tokens}")
+            st.write(f"Total Cost (USD): {cb.total_cost:.6f}")
+
     
         # # performing a similarity search to fetch the most relevant context
         st.write("")
