@@ -190,8 +190,8 @@ if selections=="AI Assistant":
         )
         st.subheader("OpenAI GPT Response")
         res=rag_chain.invoke(query)
-        st.write(res)
-        st.write(res.get("response_metadata", {}).get("token_usage", {}))
+        # st.write(res)
+        st.write(res."response_metadata")
         # tokens["open_ai"]=res['total_tokens']
 
     
