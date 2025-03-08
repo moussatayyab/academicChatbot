@@ -205,7 +205,7 @@ if selections=="AI Assistant":
         st.write(res.content)
         tokens["open_ai"]=res.response_metadata['token_usage']['total_tokens']
         tokens_df=pd.DataFrame(tokens.items())
-        # tokens_df.to_csv("token_usage.csv")
+        tokens_df.to_csv("token_usage.csv")
         # st.write(tokens_df)
 
 
@@ -214,9 +214,11 @@ if selections=="AI Assistant":
         os.system("git clone https://github.com/arish420/assistant_mistral.git")
         os.system("cp token_usage.csv assistant_mistral/")
         os.system("cd your_repo && git add . && git commit -m 'Added file' && git push origin main")
-        
-        st.success("File uploaded successfully!")
-
+        # os.system("git config --global user.email 'your_email@example.com'")
+        # os.system("git config --global user.name 'your_username'")
+        # os.system("git add my_dataframe.csv")
+        # os.system("git commit -m 'Updated DataFrame'")
+        # os.system("git push origin main")
 
 
 
