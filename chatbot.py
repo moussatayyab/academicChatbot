@@ -33,6 +33,10 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.callbacks import get_openai_callback
 import tiktoken
 
+with open("t.txt",'w') as f:
+    f.write("how")
+    f.close()
+
 # Load environment variables
 load_dotenv()
 ###############################################################setting openai ai api##################################################################
