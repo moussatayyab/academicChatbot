@@ -186,7 +186,8 @@ if selections=="AI Assistant":
         st.subheader("OpenAI GPT Response")
         res=rag_chain.invoke(query)
         st.write(res.content)
-        # st.write(res.response_metadata['token_usage']['total_tokens'])
+        st.write("Tokens Used")
+        st.write(res.response_metadata['token_usage']['total_tokens'])
         # tokens["open_ai"]=res.response_metadata['token_usage']['total_tokens']
 
     
@@ -203,6 +204,8 @@ if selections=="AI Assistant":
         st.subheader("Meta Llama3 GPT Response")
         res=rag_chain.invoke(query)
         st.write(res.content)
+        st.write("Tokens Used")
+        st.write(res.response_metadata['token_usage']['total_tokens'])
         # tokens["open_ai"]=res.response_metadata['token_usage']['total_tokens']
         # tokens_df=pd.DataFrame(tokens.items())
         # tokens_df.to_csv("token_usage.csv")
