@@ -170,8 +170,8 @@ if selections=="Home":
      Key Features:  
     ✅ Academic Assistance – Offers guidance from documents on concepts and queries.        
     ✅ Static Timetable Support – Provides info from EUAS documents (not real-time).        
-    ✅ Institutional Information – Shares policies from EUAS student resources.
-    ✅ Subject Support – Answers resource related questions EUAS student online resources.
+    ✅ Institutional Information – Shares policies from EUAS student resources.        
+    ✅ Subject Support – Answers resource related questions EUAS student online resources.        
     ✅ Interactive Interface – Enables real-time text chat and includes built-in feedback for students.  """)
         
     
