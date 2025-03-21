@@ -169,7 +169,7 @@ if selections=="Home":
     st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant developed to support students with academic and school-related inquiries. Designed specifically for the Estonian Entrepreneurship University of Applied Sciences, the chatbot provides instant responses to frequently asked questions, offers general academic guidance based on institutional materials, and assists with understanding schedules and school procedures as outlined in official documents. While it does not access real-time data or personalized instructor information, it serves as a helpful tool for navigating commonly used resources and improving access to academic support in a digital learning environment.  
      Key Features:  
     ✅ Academic Assistance – Offers guidance from documents on concepts and queries.        
-    ✅ Static Timetable Support – Provides info from EUAS documents (not real-time).
+    ✅ Static Timetable Support – Provides info from EUAS documents (not real-time).        
     ✅ Institutional Information – Shares policies from EUAS student resources.
     ✅ Subject Support – Answers resource related questions EUAS student online resources.
     ✅ Interactive Interface – Enables real-time text chat and includes built-in feedback for students.  """)
