@@ -166,14 +166,14 @@ selections=st.sidebar.selectbox("☰ Menu", ["Home","AI Assistant", "Feedback"])
 query=""
 # tokens={}
 if selections=="Home":
-    st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant designed to help students with their academic and school-related queries. It provides instant responses to common questions, assists with homework, shares important school updates, and offers guidance on schedules, subjects, and extracurricular activities.  
+    st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant developed to support students with academic and school-related inquiries. Designed specifically for the Estonian Entrepreneurship University of Applied Sciences, the chatbot provides instant responses to frequently asked questions, offers general academic guidance based on institutional materials, and assists with understanding schedules and school procedures as outlined in official documents. While it does not access real-time data or personalized instructor information, it serves as a helpful tool for navigating commonly used resources and improving access to academic support in a digital learning environment.  
      Key Features:  
-    ✅ Homework Assistance – Provides explanations and study resources.  
-    ✅ Timetable & Schedule Support – Helps students check class schedules.  
-    ✅ School Announcements & Notices – Delivers updates on events and policies.  
-    ✅ Subject Guidance – Answers subject-related queries.  
-    ✅ Interactive – Allows students to communicate via text.  """)
-    
+    ✅ Academic Assistance – Provides general academic guidance based on institutional documents, including explanations of common concepts and study-related queries.
+    ✅ Static Timetable Support – Offers information on schedules available from pre-uploaded EUAS documents; does not reflect real-time changes.
+    ✅ Institutional Information – Delivers responses based on existing announcements and policies extracted from the student resources section of the EUAS website.
+    ✅ Subject Support – Responds to general subject-related questions, limited to the scope of the chatbot’s training data.
+    ✅ Interactive Interface – Supports real-time, text-based conversation and includes a built-in feedback section for students to rate responses  """)
+        
     
 if selections=="AI Assistant":
     query=st.text_input("Write Query Here")
