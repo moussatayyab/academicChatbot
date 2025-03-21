@@ -168,10 +168,10 @@ query=""
 if selections=="Home":
     st.markdown("""The School Student Assistant Chatbot is an AI-powered virtual assistant developed to support students with academic and school-related inquiries. Designed specifically for the Estonian Entrepreneurship University of Applied Sciences, the chatbot provides instant responses to frequently asked questions, offers general academic guidance based on institutional materials, and assists with understanding schedules and school procedures as outlined in official documents. While it does not access real-time data or personalized instructor information, it serves as a helpful tool for navigating commonly used resources and improving access to academic support in a digital learning environment.  
      Key Features:  
-    ✅ Academic Assistance – Provides general academic guidance based on institutional documents, including explanations of common concepts and study-related queries.
-    ✅ Static Timetable Support – Offers information on schedules available from pre-uploaded EUAS documents; does not reflect real-time changes.
-    ✅ Institutional Information – Delivers responses based on existing announcements and policies extracted from the student resources section of the EUAS website.
-    ✅ Subject Support – Responds to general subject-related questions, limited to the scope of the chatbot’s training data.
+    ✅ Academic Assistance – Provides general academic guidance based on institutional documents, including explanations of common concepts and study-related queries.\n
+    ✅ Static Timetable Support – Offers information on schedules available from pre-uploaded EUAS documents; does not reflect real-time changes.\n
+    ✅ Institutional Information – Delivers responses based on existing announcements and policies extracted from the student resources section of the EUAS website.\n
+    ✅ Subject Support – Responds to general subject-related questions, limited to the scope of the chatbot’s training data.\n
     ✅ Interactive Interface – Supports real-time, text-based conversation and includes a built-in feedback section for students to rate responses  """)
         
     
