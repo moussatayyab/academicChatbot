@@ -58,7 +58,7 @@ os.environ["OPENAI_API_KEY"] = df_openai.keys()[0]
 sheet_id = '1hDcXPHbVvTdsSKc24vZHK5XpGgDtM82-0G5HGfkqZjg' # replace with your sheet's ID
 url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
 df_groq=pd.read_csv(url)
-os.environ["GROQ_API_KEY"] = df_openai.keys()[0]
+os.environ["GROQ_API_KEY"] = df_groq.keys()[0]
 #https://docs.google.com/spreadsheets/d/1hDcXPHbVvTdsSKc24vZHK5XpGgDtM82-0G5HGfkqZjg/edit?usp=sharing
 #####################################################################################################################################################
 # # Load all PDFs in a directory
