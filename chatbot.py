@@ -42,7 +42,7 @@ output_file = "open_ai_key.txt"
 # https://docs.google.com/spreadsheets/d/1Dp6Y9ps4md393F5eRZzaZhu044k4JCmrbYDxWmQ6t2g/edit?gid=0#gid=0
 sheet_id = '1Dp6Y9ps4md393F5eRZzaZhu044k4JCmrbYDxWmQ6t2g' # replace with your sheet's ID
 url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
-df=pd.read_csv(url)
+df_openai=pd.read_csv(url)
 # st.write(df)
 
 # def download_db():
@@ -54,7 +54,12 @@ df=pd.read_csv(url)
 #     f=f.read()
 #     # st.write(f)
 #     k=f
-os.environ["OPENAI_API_KEY"] = df.keys()[0]
+os.environ["OPENAI_API_KEY"] = df_openai.keys()[0]
+sheet_id = '1hDcXPHbVvTdsSKc24vZHK5XpGgDtM82-0G5HGfkqZjg' # replace with your sheet's ID
+url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+df_groq=pd.read_csv(url)
+os.environ["GROQ_API_KEY"] = df_openai.keys()[0]
+#https://docs.google.com/spreadsheets/d/1hDcXPHbVvTdsSKc24vZHK5XpGgDtM82-0G5HGfkqZjg/edit?usp=sharing
 #####################################################################################################################################################
 # # Load all PDFs in a directory
 # pdf_folder = "database"
@@ -101,7 +106,7 @@ retriever = vector_store.as_retriever()
 
 ##########################################################################setting groq api ###############################################################
 
-GROQ_API_KEY=os.getenv("GROQ_API_KEY")
+#GROQ_API_KEY=os.getenv("GROQ_API_KEY")
 
 from langchain_groq import ChatGroq
 
